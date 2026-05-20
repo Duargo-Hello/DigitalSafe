@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <title>Cofre Digital Ultra Pro</title>
+
+</head>
+
+<body>
+
+    <div id="auth" class="container">
+
+        <div class="card authBox">
+
+            <div class="logo">🔐</div>
+            <div class="title">Cofre Digital Ultra Pro</div>
+
+            <div class="subtitle">
+            Armazene projetos, documentos, links, senhas e anotações com visual profissional.
+            </div>
+
+            <input id="user" placeholder="Usuário">
+            <input id="pass" type="password" placeholder="Senha">
+
+            <button class="btn btnFull" onclick="register()">
+            Cadastrar
+            </button>
+
+            <button class="btnSecondary btnFull" onclick="login()">
+            Entrar
+            </button>
+
+        </div>
+
+    </div>
+
+    <div id="app" class="container hidden">
+
+        <div class="header">
+
+            <div>
+                <h1>📦 Meu Cofre</h1>
+                <p style="margin-top:8px;color:var(--muted);">
+                Painel profissional de gerenciamento.
+                </p>
+            </div>
+
+            <div class="headerActions">
+
+                <button class="btnSecondary" onclick="exportBackup()">Exportar Backup</button>
+                <button class="btnDanger" onclick="logout()">Sair</button>
+
+            </div>
+
+        </div>
+
+        <div class="stats">
+
+            <div class="card stat">
+
+                <p>Total de Itens</p>
+                <h2 id="total">0</h2>
+
+            </div>
+
+            <div class="card stat">
+
+                <p>Favoritos</p>
+                <h2 id="favorites">0</h2>
+
+            </div>
+
+            <div class="card stat">
+
+                <p>Categorias</p>
+                <h2 id="categories">0</h2>
+
+            </div>
+
+        </div>
+
+        <div class="topBar">
+
+            <h2>Registros</h2>
+
+            <button class="btn" onclick="openModal()">➕ Novo Registro</button>
+
+        </div>
+
+        <div class="searchGrid">
+
+            <input id="search" placeholder="Pesquisar..." oninput="render()">
+
+            <select id="filter" onchange="render()">
+
+                <option value="Todos">Todas Categorias</option>
+                <option value="Projetos">Projetos</option>
+                <option value="Senhas">Senhas</option>
+                <option value="Documentos">Documentos</option>
+                <option value="Links">Links</option>
+                <option value="Pessoal">Pessoal</option>
+
+            </select>
+
+            <select id="sort" onchange="render()">
+
+                <option value="recent">Mais Recentes</option>
+                <option value="old">Mais Antigos</option>
+                <option value="az">A-Z</option>
+                <option value="favorites">Favoritos</option>
+
+            </select>
+
+        </div>
+
+        <div id="list" class="grid"></div>
+
+    </div>
+
+
+    <div id="modal" class="modal hidden">
+
+        <div class="card modalContent">
+
+            <div class="modalHeader">
+
+                <h2 id="modalTitle">Novo Registro</h2>
+                <button class="closeBtn" onclick="closeModal()">✖</button>
+
+            </div>
+
+            <input id="titleInput" placeholder="Título">
+
+            <select id="categoryInput">
+
+                <option value="Projetos">Projetos</option>
+                <option value="Senhas">Senhas</option>
+                <option value="Documentos">Documentos</option>
+                <option value="Links">Links</option>
+                <option value="Pessoal">Pessoal</option>
+
+            </select>
+
+            <textarea id="textInput" placeholder="Digite as informações..."></textarea>
+
+            <button class="btn btnFull" onclick="saveItem()">Salvar Registro</button>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
